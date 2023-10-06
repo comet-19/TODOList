@@ -1,10 +1,10 @@
 import "./App.css";
-import AddressSerch from "./AddressSerch";
+import TODOList from "./TODOList";
 
 function App() {
 	return (
 		<div>
-			<AddressSerch />
+			<TODOList />
 		</div>
 	);
 }
