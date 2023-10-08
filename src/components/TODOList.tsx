@@ -35,8 +35,9 @@ function TODOList() {
             setForthBox.innerHTML = del;
             tr.appendChild(setForthBox);
 
-
             tbl?.appendChild(tr);
+
+            setNewList("");
         }
 
     }
@@ -48,7 +49,7 @@ function TODOList() {
             </header>
             <h1>TODOList</h1>
             <div>
-                <input type="text" onChange={(event) => setNewList(event.target.value)} /><span><button onClick={() => addrow()}>追加</button></span>
+                <input type="text" value={TODOContent} onChange={(event) => setNewList(event.target.value)} /><span><button onClick={() => addrow()}>追加</button></span>
             </div>
             <div className="contents">
                 <table id="table" border={1}>
