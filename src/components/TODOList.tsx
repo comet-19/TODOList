@@ -32,6 +32,11 @@ function TODOList() {
 
             let setForthBox = document.createElement('td');
             let setdeletebutton = document.createElement('button');
+            setdeletebutton.setAttribute('id', 'delete');
+            setdeletebutton.onclick = function() {
+                console.log("この内容は完了しました！！");
+            };
+
             const del = "削除";
             setdeletebutton.innerHTML = del;
             setForthBox.appendChild(setdeletebutton);
@@ -51,7 +56,7 @@ function TODOList() {
             </header>
             <h1>TODOList</h1>
             <div>
-                <input type="text" value={TODOContent} onChange={(event) => setNewList(event.target.value)} /><span><button onClick={() => addrow()}>追加</button></span>
+                <input type="text" value={TODOContent} onChange={(event) => setNewList(event.target.value)} /><span><button className="addbutton" onClick={() => addrow()}>追加</button></span>
             </div>
             <div className="contents">
                 <table id="table" border={1}>
