@@ -31,8 +31,10 @@ function TODOList() {
             tr.appendChild(setThirdBox);
 
             let setForthBox = document.createElement('td');
+            let setdeletebutton = document.createElement('button');
             const del = "削除";
-            setForthBox.innerHTML = del;
+            setdeletebutton.innerHTML = del;
+            setForthBox.appendChild(setdeletebutton);
             tr.appendChild(setForthBox);
 
             tbl?.appendChild(tr);
