@@ -11,6 +11,12 @@ function TODOList() {
 
     const [todos, setTodo] = useState<Array<string>>([]);
 
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date  = today.getDate();
+
+
     function ChangeSetTodo() {
         if (TODOContent != '') {
             setTodo([...todos, TODOContent]);
@@ -39,7 +45,7 @@ function TODOList() {
                     <tbody>
                         {
                             todos.map((todo, index) => {
-                                return <Row key={todo} content={todo} id={index} />
+                                return <Row key={todo} content={todo} id={index} date={`${year}/${month}/${date}`}/>
                             })
                         }
                     </tbody>
