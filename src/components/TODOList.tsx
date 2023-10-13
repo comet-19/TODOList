@@ -25,6 +25,12 @@ function TODOList() {
         }
     }
 
+    function RowDelete(getid:any) {
+        setTodo(
+            todos.filter((todo, index) => (index !== getid))
+        )
+    }
+
     return (
         <div className="App">
             <div>
@@ -45,7 +51,7 @@ function TODOList() {
                     <tbody>
                         {
                             todos.map((todo, index) => {
-                                return <Row key={todo} content={todo} id={index} date={`${year}/${month}/${date}`}/>
+                                return <Row key={todo} content={todo} id={index} date={`${year}/${month}/${date}`} onClick={()=> RowDelete(index)} />
                             })
                         }
                     </tbody>
