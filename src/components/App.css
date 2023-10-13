@@ -14,6 +14,10 @@ header {
 th {
     background-color: #9CA3AF;
     color: white;
+    padding: 10px;
+}
+td {
+    padding: 10px;
 }
 input {
     height: 30px;
@@ -32,8 +36,18 @@ input {
 .contents {
     display: flex;
     justify-content: center;
+    position: relative;
+    margin: 50px;
 }
 
 #delete {
     color: blue;
+}
+
+.AllDelete {
+    background-color: red;
+    color: white;
+    border-radius: 10%;
+    position: absolute;
+    top: -30px;
 }
