@@ -11,6 +11,8 @@ function TODOList() {
 
     const [todos, setTodo] = useState<Array<any>>([]);
 
+    const [BigCheckbox, setBigCheckbox] = useState(false);
+
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
@@ -46,11 +48,16 @@ function TODOList() {
         setTodo(
             todos.filter((todo) => (!(todo.checked)))
         )
+        if (BigCheckbox) {
+            setBigCheckbox(!BigCheckbox);    
+        }
     }
 
     function ALLCheck() {
+        setBigCheckbox(!(BigCheckbox));
+        console.log(BigCheckbox);
         setTodo(
-            todos.map((todo) => (true ? {content : todo.content, id : todo.id, checked : true} : todo))
+            todos.map((todo) => (true ? {content : todo.content, id : todo.id, checked : !BigCheckbox} : todo))
         )
     }
 
@@ -66,7 +73,7 @@ function TODOList() {
                 <table id="table" border={1}>
                     <thead>
                         <tr>
-                            <th className="line1"><input type="checkbox" onClick={() => ALLCheck()}/></th>
+                            <th className="line1"><input type="checkbox" checked={BigCheckbox} onChange={() => ALLCheck()}/></th>
                             <th className="line2">登録日</th>
                             <th className="line3">TODO</th>
                             <th className="line4">削除</th>
