@@ -14,11 +14,8 @@ header {
 th {
     background-color: #9CA3AF;
     color: white;
-    padding: 10px;
 }
-td {
-    padding: 10px;
-}
+
 input {
     height: 30px;
 }
@@ -50,4 +47,29 @@ input {
     border-radius: 10%;
     position: absolute;
     top: -30px;
+}
+
+.line1 {
+    width: 60px;
+    height: 20px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.line2 {
+    height: 20px;
+    width: 150px;
+    font-size: 15px;
+}
+
+.line3 {
+    height: 20px;
+    width: 600px;
+    font-size: 15px;
+}
+
+.line4 {
+    height: 20px;
+    width: 90px;
+    font-size: 15px;
 }
