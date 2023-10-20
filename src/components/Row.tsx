@@ -5,10 +5,10 @@ function Row (props:any) {
     
     return (
         <tr>
-            <td><input type="checkbox" /></td>
-            <td>{props.date}</td>
-            <td>{props.content}</td>
-            <td><button onClick={props.onClick}>Delete</button></td>
+            <td className="line1"><input type="checkbox" onClick={props.checked} checked = {props.checkbool}/></td>
+            <td className="line2">{props.date}</td>
+            <td className="line3">{props.content}</td>
+            <td className="line4"><button onClick={props.onClick}>Delete</button></td>
         </tr>
     )
 }

@@ -1,15 +1,15 @@
 import { create } from "domain";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 import Row from "./Row"
-import { connect } from "http2";
+import { idText } from "typescript";
 
 
 function TODOList() {
     const [TODOContent, setNewList] = useState("");
 
-    const [todos, setTodo] = useState<Array<string>>([]);
+    const [todos, setTodo] = useState<Array<any>>([]);
 
     const today = new Date();
     const year = today.getFullYear();
@@ -18,10 +18,9 @@ function TODOList() {
 
 
     function ChangeSetTodo() {
-        if (TODOContent != '') {
-            setTodo([...todos, TODOContent]);
+        if (TODOContent !== '') {
+            setTodo([...todos, {content:TODOContent, id:CreateID(), checked:false}]);
             setNewList("");
-            console.log(todos.length);
         }
     }
 
@@ -31,6 +30,31 @@ function TODOList() {
         )
     }
 
+    function CreateID() {
+        const GenerateID = crypto.randomUUID();
+        return GenerateID;
+    }
+
+
+    function ChangeBool(getid:any) {
+        setTodo (
+            todos.map((todo, index) => (index == getid ? {content : todo.content, id : todo.id, checked : !todo.checked} : todo))
+        )
+    }
+
+    function ALLDelete() {
+        setTodo(
+            todos.filter((todo) => (!(todo.checked)))
+        )
+    }
+
+    function ALLCheck() {
+        setTodo(
+            todos.map((todo) => (true ? {content : todo.content, id : todo.id, checked : true} : todo))
+        )
+    }
+
+
     return (
         <div className="App">
             <div>
@@ -38,20 +62,20 @@ function TODOList() {
             </div>
 
             <div className="contents">
-                <div><button className="AllDelete"><small>一括削除</small></button></div>
+                <div><button className="AllDelete" onClick={() => ALLDelete()}><small>一括削除</small></button></div>
                 <table id="table" border={1}>
                     <thead>
                         <tr>
-                            <th><input type="checkbox" /></th>
-                            <th>登録日</th>
-                            <th>TODO</th>
-                            <th>削除</th>
+                            <th className="line1"><input type="checkbox" onClick={() => ALLCheck()}/></th>
+                            <th className="line2">登録日</th>
+                            <th className="line3">TODO</th>
+                            <th className="line4">削除</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             todos.map((todo, index) => {
-                                return <Row key={todo} content={todo} id={index} date={`${year}/${month}/${date}`} onClick={()=> RowDelete(index)} />
+                                return <Row key={todo.id} content={todo.content} date={`${year}/${month}/${date}`} onClick={()=> RowDelete(index)} checked={() => ChangeBool(index)} checkbool = {todo.checked}/>
                             })
                         }
                     </tbody>
